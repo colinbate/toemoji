@@ -4,6 +4,10 @@ html, body {
 	height: 100%;
 }
 
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
 :root {
 	--white: #EDE1CF;
 	--grey: #B2B4A6;
