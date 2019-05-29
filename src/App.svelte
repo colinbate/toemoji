@@ -14,7 +14,7 @@
 		playgame = true;
 	}
 	function gameOver(ev) {
-		winner = ev.detail.playerName;
+		winner = ev.detail.won && ev.detail.playerName || true;
 	}
 	function newGame(ev) {
 		playmode = null;

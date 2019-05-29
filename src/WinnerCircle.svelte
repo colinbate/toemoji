@@ -15,7 +15,11 @@ button {
 }
 </style>
 <div class="winner">
+{#if name === true}
+<h1>Tie Game</h1>
+{:else}
 <h1>Congratulations</h1> 
 <img src="/emoji/{name}.svg" alt="Player">
+{/if}
 <button type="button" on:click={() => dispatch('newgame')}>New Game</button>
 </div>
