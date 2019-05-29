@@ -1,7 +1,7 @@
 <script>
 import {createEventDispatcher} from 'svelte';
 import {players} from './stores.js';
-import {didWin} from './tictactoe.js';
+import {didWin, getNextMove} from './tictactoe.js';
 const dispatch = createEventDispatcher();
 let player = 0;
 let board = ['', '', '', '', '', '', '', '', ''];
@@ -26,6 +26,9 @@ function clickBoard(spotIndex) {
       dispatch('gameover', {won: false});
     }
     player = (player + 1) % 2;
+    if ($players[player] === 'computer') {
+      setTimeout(() => clickBoard(getNextMove(board)), 600);
+    }
   }
 }
 </script>

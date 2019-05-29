@@ -1,3 +1,4 @@
+const MAX_INT = 2147483647;
 const winning = [
   [[1,2],[3,6],[4,8]],
   [[0,2],[4,7]],
@@ -18,4 +19,29 @@ export function didWin(board, lastMove, name) {
     }
   }
   return false;
+}
+
+function rand() {
+  const crypto = window.crypto || window.msCrypto;
+  if (crypto) {
+    const a = new Uint32Array(1);
+    crypto.getRandomValues(a);
+    return (a[0] & MAX_INT) / MAX_INT;
+  } else {
+    return Math.random();
+  }
+}
+
+function randIndex(len) {
+  return Math.floor(rand() * len);
+}
+
+export function getNextMove(board) {
+  const choices = board.reduce((p, c, i) => {
+    if (!c) {
+      p.push(i);
+    }
+    return p;
+  }, []);
+  return choices[randIndex(choices.length)];
 }
