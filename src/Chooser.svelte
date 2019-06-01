@@ -1,4 +1,5 @@
 <script>
+import {fade} from 'svelte/transition';
 import {createEventDispatcher} from 'svelte';
 export let player;
 export let disable;
@@ -55,13 +56,13 @@ const emojiList = [
 h1 {
   background-color: var(--title-bg);
   width: 100%;
-  padding: 1rem;
+  padding: 1rem 0;
   margin-top: 0;
   text-align: center;
   color: var(--white);
 }
 </style>
-<div class="wrapper">
+<div class="wrapper" in:fade>
   <h1>Choose Player {player + 1}</h1>
   <div class="chooser">
     {#each emojiList as em}

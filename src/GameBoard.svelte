@@ -1,5 +1,6 @@
 <script>
 import {createEventDispatcher} from 'svelte';
+import {fade} from 'svelte/transition';
 import {players} from './stores.js';
 import {didWin, getNextMove} from './tictactoe.js';
 const dispatch = createEventDispatcher();
@@ -80,7 +81,7 @@ function clickBoard(spotIndex) {
   <h2>Your turn Player {player + 1}</h2>
   <svg><use xlink:href="/emoji.svg#{$players[player]}"/></svg>
 </div>
-<div class="bgwrap">
+<div class="bgwrap" in:fade>
   <div class="boardbg">
     <div class="board">
       {#each board as spot, i}
