@@ -15,13 +15,14 @@ html, body {
 	--primary-color: #FEE22F;
 	--secondary-color: #EB9329;
 	--accent-color: #A25853;
+	--title-bg: #4864ED;
 }
 
 body {
 	color: var(--black);
 	background-color: var(--white);
 	margin: 0;
-	padding: 8px;
+	padding: 0;
 	box-sizing: border-box;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }

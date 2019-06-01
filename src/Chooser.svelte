@@ -27,7 +27,7 @@ const emojiList = [
 </script>
 <style>
 .chooser {
-  width: 100%;
+  width: 90%;
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: repeat(4, 1fr);
@@ -51,6 +51,14 @@ const emojiList = [
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+h1 {
+  background-color: var(--title-bg);
+  width: 100%;
+  padding: 1rem;
+  margin-top: 0;
+  text-align: center;
+  color: var(--white);
 }
 </style>
 <div class="wrapper">

@@ -63,6 +63,9 @@ function clickBoard(spotIndex) {
   justify-content: center;
 }
 .turn {
+  padding: 1rem;
+  background-color: var(--title-bg);
+  color: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
