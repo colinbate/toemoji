@@ -13,8 +13,17 @@ export let name;
 button {
   margin-top: 2rem;
 }
-.w-50 {
+.w-50-c {
   width: 50%;
+  height: 0;
+  position: relative;
+  padding: 0 0 50% 0;
+}
+.w-75-c {
+  width: 75%;
+  height: 0;
+  position: relative;
+  padding: 0 0 75% 0;
 }
 </style>
 <div class="winner">
@@ -22,10 +31,10 @@ button {
 <h1>Tie Game</h1>
 {:else if name === 'computer'}
 <h1>You Lose</h1>
-<img src="/emoji/cry.svg" alt="Crying" class="w-50">
+<div class="w-50-c"><svg class="scaled"><use xlink:href="/emoji.svg#cry"/></svg></div>
 {:else}
 <h1>Congratulations</h1> 
-<img src="/emoji/{name}.svg" alt="Player">
+<div class="w-75-c"><svg class="scaled"><use xlink:href="/emoji.svg#{name}"/></svg></div>
 {/if}
 <button type="button" on:click={() => dispatch('newgame')}>New Game</button>
 </div>

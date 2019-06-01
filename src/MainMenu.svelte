@@ -32,14 +32,14 @@ function setMode(mode) {
 	<h1>Tic Tac Toemoji!</h1>
 
 	<button type="button" class="with-icons" on:click={() => setMode('1p')}>
-		<img src="/emoji/smiley-emoji.svg" alt="Human" class="icon">
+		<svg class="icon"><use xlink:href="/emoji.svg#smiley-emoji"/></svg>
 		<span>vs</span>
-		<img src="/emoji/computer.svg" alt="Computer" class="icon">
+		<svg class="icon"><use xlink:href="/emoji.svg#computer"/></svg>
 	</button>
 
 	<button type="button" class="with-icons" on:click={() => setMode('2p')}>
-		<img src="/emoji/smiley-emoji.svg" alt="Human" class="icon">
+		<svg class="icon"><use xlink:href="/emoji.svg#smiley-emoji"/></svg>
 		<span>vs</span>
-		<img src="/emoji/smiley-emoji.svg" alt="Another Human" class="icon">
+		<svg class="icon"><use xlink:href="/emoji.svg#smiley-emoji"/></svg>
 	</button>
 </div>

@@ -39,8 +39,25 @@ a:visited {
 	color: var(--accent-color);
 }
 
-img.icon {
+.icon {
 	width: 4rem;
+	height: 4rem;
+}
+
+.scaled-container {
+	position: relative; 
+	height: 0; 
+	width: 100%; 
+	padding: 0;
+	padding-bottom: 100%; 
+}
+
+.scaled {
+	position: absolute; 
+	height: 100%; 
+	width: 100%; 
+	left: 0; 
+	top: 0;
 }
 
 label {

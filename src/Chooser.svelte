@@ -29,21 +29,21 @@ const emojiList = [
 .chooser {
   width: 100%;
   display: grid;
+  grid-gap: 1rem;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
 }
-.chooser img {
+.chooser svg {
   width: 100%;
 }
 
 .chooser div {
-  padding: 0.5rem;
   cursor: pointer;
 }
 .chooser div.disable {
   cursor: not-allowed;
 }
-.chooser div.disable img {
+.chooser div.disable svg {
   opacity: 0.3;
 }
 .wrapper {
@@ -57,8 +57,8 @@ const emojiList = [
   <h1>Choose Player {player + 1}</h1>
   <div class="chooser">
     {#each emojiList as em}
-    <div class:disable={em === disable}>
-    <img src="/emoji/{em}.svg" alt={em} on:click={() => makeChoice(em)}>
+    <div class="scaled-container" class:disable={em === disable}>
+    <svg class="scaled" on:click={() => makeChoice(em)}><use xlink:href="/emoji.svg#{em}"/></svg>
     </div>
     {/each}
   </div>
