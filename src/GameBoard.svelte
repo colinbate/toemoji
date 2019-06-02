@@ -8,7 +8,12 @@ let player = 0;
 let board = ['', '', '', '', '', '', '', '', ''];
 let moveCount = 0;
 let won = false;
+let locked = false;
+// const printb = () => console.log(board.join(' | '));
 function clickBoard(spotIndex) {
+  if (board[spotIndex] || locked) {
+    return; // Ignore clicks on occupied spaces or while computer is thinking.
+  }
   moveCount += 1;
   board = board.map((spot, index) => {
     if (index === spotIndex && !spot) {
@@ -28,12 +33,20 @@ function clickBoard(spotIndex) {
     }
     player = (player + 1) % 2;
     if ($players[player] === 'computer') {
-      setTimeout(() => clickBoard(getNextMove(board)), 600);
+      locked = true;
+      setTimeout(() => {
+        locked = false;
+        clickBoard(getNextMove(board));
+      }, 600);
     }
   }
 }
 </script>
 <style>
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
 .bgwrap {
   padding: 1rem;
 }
@@ -62,6 +75,7 @@ function clickBoard(spotIndex) {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .turn {
   padding: 1rem;
@@ -76,19 +90,48 @@ function clickBoard(spotIndex) {
   height: 4rem;
   margin-left: 1rem;
 }
+@media (orientation: landscape) {
+  .wrapper {
+    flex-direction: row;
+    height: 100vh;
+  }
+  .turn {
+    max-width: 12rem;
+    height: 100%;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+  .turn h2 {
+    text-align: center;
+  }
+  .turn svg {
+    margin: 0;
+  }
+  .bgwrap {
+    flex-grow: 1;
+    padding: 2vh;
+  }
+  .boardbg {
+    margin: 0 auto;
+    width: 96vh;
+    padding: 0 0 96vh 0;
+  }
+}
 </style>
-<div class="turn">
-  <h2>Your turn Player {player + 1}</h2>
-  <svg><use xlink:href="/emoji.svg#{$players[player]}"/></svg>
-</div>
-<div class="bgwrap" in:fade>
-  <div class="boardbg">
-    <div class="board">
-      {#each board as spot, i}
-        <div class="spot" on:click={() => clickBoard(i)}>
-          {#if spot}<div class="scaled-container"><svg class="scaled"><use xlink:href="/emoji.svg#{spot}"/></svg></div>{/if}
-        </div>
-      {/each}
+<div class="wrapper">
+  <div class="turn">
+    <h2>Your turn Player {player + 1}</h2>
+    <svg><use xlink:href="/emoji.svg#{$players[player]}"/></svg>
+  </div>
+  <div class="bgwrap" in:fade>
+    <div class="boardbg">
+      <div class="board">
+        {#each board as spot, i}
+          <div class="spot" on:click={() => clickBoard(i)}>
+            {#if spot}<div class="scaled-container"><svg class="scaled"><use xlink:href="/emoji.svg#{spot}"/></svg></div>{/if}
+          </div>
+        {/each}
+      </div>
     </div>
   </div>
 </div>

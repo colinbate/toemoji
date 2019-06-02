@@ -61,6 +61,12 @@ h1 {
   text-align: center;
   color: var(--white);
 }
+@media (orientation: landscape) {
+  .chooser {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
 </style>
 <div class="wrapper" in:fade>
   <h1>Choose Player {player + 1}</h1>

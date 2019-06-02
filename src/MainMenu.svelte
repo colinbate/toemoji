@@ -17,9 +17,17 @@ function setMode(mode) {
 		align-items: center;
 		justify-content: center;
 	}
+	@media (orientation: landscape) {
+		.mainmenu {
+			flex-direction: row;
+			height: 100vh;
+		}
+	}
 </style>
 <div class="mainmenu" in:fade>
 	<Logo/>
-	<StyleButton left="smiley-emoji" right="computer" on:click={() => setMode('1p')}/>
-	<StyleButton left="smiley-emoji" right="smiley-emoji" on:click={() => setMode('2p')}/>
+	<div class="options">
+		<StyleButton left="smiley-emoji" right="computer" on:click={() => setMode('1p')}/>
+		<StyleButton left="smiley-emoji" right="smiley-emoji" on:click={() => setMode('2p')}/>
+	</div>
 </div>

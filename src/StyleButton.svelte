@@ -14,7 +14,12 @@ export let right;
 	}
 	.vs {
 		font-size: 1.5rem;
-	}
+  }
+  @media (orientation: landscape) {
+    button {
+      margin: 1rem;
+    }
+  }
 </style>
 
 <button type="button" class="with-icons" on:click>
